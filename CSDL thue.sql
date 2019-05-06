@@ -18,7 +18,7 @@ CREATE TABLE `thue`.`tbl_user` (
   `dinh_muc_phu_cap_4` MEDIUMTEXT NULL DEFAULT NULL,
   `so_nguoi_phu_thuoc` MEDIUMTEXT NULL DEFAULT NULL,
   PRIMARY KEY (`cmnd`),
-  UNIQUE INDEX `idtbl_user_UNIQUE` (`cmnd` ASC) VISIBLE)
+  UNIQUE INDEX `idtbl_user_UNIQUE` (`cmnd` ASC))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;

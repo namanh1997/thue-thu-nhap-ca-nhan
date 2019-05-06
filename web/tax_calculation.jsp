@@ -22,7 +22,7 @@
     <body>
         <%
             User user = (User) request.getSession().getAttribute("user");
-            DecimalFormat formatter = new DecimalFormat("###,###,###,###");
+            DecimalFormat formatter = new DecimalFormat("### ### ### ###");
             if (user != null) {
         %>
         <jsp:include page="header.jsp"></jsp:include>

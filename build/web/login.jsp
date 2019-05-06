@@ -28,7 +28,7 @@
                 <div class="col-4">
                     <form action="LoginServlet" method="post" class="needs-validation" novalidate>
                         <div class="form-group">
-                            <label for="cmnd"><b>CMND</b></label>
+                            <label for="cmnd"><b>CHỨNG MINH NHÂN DÂN</b></label>
                             <input type="text" class="form-control" name="cmnd"
                                    pattern="^(\d{9}|\d{12})$" maxlength="12"
                                    placeholder="Chứng minh nhân dân" required>
@@ -37,7 +37,7 @@
                         <div class="form-group">
                             <label for="mat-khau"><b>MẬT KHẨU</b></label>
                             <input type="password" class="form-control" name="mat-khau"
-                                   pattern="^[a-zA-Z0-9]{0,255}$" maxlength="255"
+                                   pattern="^[a-zA-Z0-9]{6,255}$" maxlength="255"
                                    title="Ít nhất 6 ký tự. Không bao gồm ký tự đăc biệt
                                    (!@#$%^&*...). Tối đa 255 ký tự"
                                    placeholder="Mật khẩu" required>
