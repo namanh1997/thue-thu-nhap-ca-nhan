@@ -17,15 +17,16 @@
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/jquery-3.4.0.min.js"></script>
      
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/declare.css">
         <script src="${pageContext.request.contextPath}/js/declare.js"></script>
     </head>
     <body>
         <%
             User user = (User) request.getSession().getAttribute("user");
-            DecimalFormat formatter = new DecimalFormat("###,###,###,###");
+            DecimalFormat formatter = new DecimalFormat("############");
             if (user != null) {
         %>
-        <jsp:include page="header.jsp"></jsp:include>
+        <jsp:include page="dau-trang.jsp"></jsp:include>
         <div class="container">
             <form action="DeclareServlet" method="get" class="needs-validation" novalidate>
                 
@@ -42,7 +43,7 @@
                 <div class="form-group row">
                     <label for="luong" class="col-2 text-right">Lương chính</label>
                     <div class="col-3">
-                        <input type="text" class="form-control" name="luong" 
+                        <input type="text" class="form-control number" name="luong" 
                                pattern="^[0-9,]{1,12}$" maxlength="12"
                                value="<%=formatter.format(user.getLuong())%>">
                         <div class="invalid-feedback">Tối đa 12 chữ số</div>
@@ -52,7 +53,7 @@
                 <div class="form-group row">
                     <label for="thuong" class="col-2 text-right">Thưởng</label>
                     <div class="col-3">
-                        <input type="text" class="form-control" name="thuong"
+                        <input type="text" class="form-control number" name="thuong"
                                pattern="^[0-9,]{1,12}$" maxlength="12" 
                                title="Tối đa 12 chữ số"
                                value="<%=formatter.format(user.getThuong())%>">
@@ -61,7 +62,7 @@
                     
                     <label for="dinhMucThuong" class="col-3 text-right">Định mức thưởng</label>
                     <div class="col-3">
-                        <input type="text" class="form-control" name="dinhMucThuong" 
+                        <input type="text" class="form-control number" name="dinhMucThuong" 
                                pattern="^[0-9,]{1,12}$" maxlength="12" 
                                title="Tối đa 12 chữ số"
                                value="<%=formatter.format(user.getDinhMucThuong())%>">
@@ -72,7 +73,7 @@
                 <div class="form-group row">
                     <label for="tienLamThemGio" class="col-2 text-right">Tiền làm thêm giờ</label>
                     <div class="col-3">
-                        <input type="text" class="form-control" name="tienLamThemGio"
+                        <input type="text" class="form-control number" name="tienLamThemGio"
                                pattern="^[0-9,]{1,12}$" maxlength="12" 
                                title="Tối đa 12 chữ số"
                                value="<%=formatter.format(user.getLamThem())%>">
@@ -81,7 +82,7 @@
                     
                     <label for="dinhMucTienLamThemGio" class="col-3 text-right">Định mức tiền làm thêm giờ</label>
                     <div class="col-3">
-                        <input type="text" class="form-control" name="dinhMucTienLamThemGio"
+                        <input type="text" class="form-control number" name="dinhMucTienLamThemGio"
                                pattern="^[0-9,]{1,12}$" maxlength="12" 
                                title="Tối đa 12 chữ số"
                                value="<%=formatter.format(user.getDinhMucLamThem())%>">
@@ -92,7 +93,7 @@
                 <div class="form-group row">
                     <label for="phuCapTienAn" class="col-2 text-right">Phụ cấp 1 (ăn uống)</label>
                     <div class="col-3">
-                        <input type="text" class="form-control" name="phuCapTienAn"
+                        <input type="text" class="form-control number" name="phuCapTienAn"
                                pattern="^[0-9,]{1,12}$" maxlength="12" 
                                title="Tối đa 12 chữ số"
                                value="<%=formatter.format(user.getPhuCap1())%>">
@@ -103,7 +104,7 @@
                 <div class="form-group row">
                     <label for="phuCapTrangPhuc" class="col-2 text-right">Phụ cấp 2 (trang phục)</label>
                     <div class="col-3">
-                        <input type="text" class="form-control" name="phuCapTrangPhuc"
+                        <input type="text" class="form-control number" name="phuCapTrangPhuc"
                                pattern="^[0-9,]{1,12}$" maxlength="12" 
                                title="Tối đa 12 chữ số"
                                value="<%=formatter.format(user.getPhuCap2())%>">
@@ -114,7 +115,7 @@
                 <div class="form-group row">
                     <label for="phuCapDiLai" class="col-2 text-right">Phụ cấp 3 (đi lại)</label>
                     <div class="col-3">
-                        <input type="text" class="form-control" name="phuCapDiLai"
+                        <input type="text" class="form-control number" name="phuCapDiLai"
                                pattern="^[0-9,]{1,12}$" maxlength="12" 
                                title="Tối đa 12 chữ số"
                                value="<%=formatter.format(user.getPhuCap3())%>">
@@ -123,7 +124,7 @@
                     
                     <label for="dinhMucPhuCapDiLai" class="col-3 text-right">Định mức phụ cấp 3</label>
                     <div class="col-3">
-                        <input type="text" class="form-control" name="dinhMucPhuCapDiLai"
+                        <input type="text" class="form-control number" name="dinhMucPhuCapDiLai"
                                pattern="^[0-9,]{1,12}$" maxlength="12" 
                                title="Tối đa 12 chữ số"
                                value="<%=formatter.format(user.getDinhMucPhuCap3())%>">
@@ -134,7 +135,7 @@
                 <div class="form-group row">
                     <label for="phuCapKhac" class="col-2 text-right">Phụ cấp 4 (khác)</label>
                     <div class="col-3">
-                        <input type="text" class="form-control" name="phuCapKhac"
+                        <input type="text" class="form-control number" name="phuCapKhac"
                                pattern="^[0-9,]{1,12}$" maxlength="12" 
                                title="Tối đa 12 chữ số"
                                value="<%=formatter.format(user.getPhuCap4())%>">
@@ -143,7 +144,7 @@
                     
                     <label for="dinhMucPhuCapKhac" class="col-3 text-right">Định mức phụ cấp 4</label>
                     <div class="col-3">
-                        <input type="text" class="form-control" name="dinhMucPhuCapKhac"
+                        <input type="text" class="form-control number" name="dinhMucPhuCapKhac"
                                pattern="^[0-9,]{1,12}$" maxlength="12" 
                                title="Tối đa 12 chữ số"
                                value="<%=formatter.format(user.getDinhMucPhuCap4())%>">
@@ -154,7 +155,7 @@
                 <div class="form-group row">
                     <label for="soNguoiPhuThuoc" class="col-2 text-right">Số người phụ thuộc</label>
                     <div class="col-3">
-                        <input type="text" class="form-control" name="soNguoiPhuThuoc"
+                        <input type="text" class="form-control number" name="soNguoiPhuThuoc"
                                pattern="^[0-9,]{1,12}$" maxlength="12" 
                                title="Tối đa 12 chữ số"
                                value="<%=formatter.format(user.getSoNguoiPhuThuoc())%>">

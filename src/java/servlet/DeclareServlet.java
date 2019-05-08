@@ -46,7 +46,7 @@ public class DeclareServlet extends HttpServlet {
         userDAO.updateUser(user);
         
         request.getSession().setAttribute("user", user);
-        request.getRequestDispatcher("/tax_calculation.jsp").forward(request, response);
+        request.getRequestDispatcher("/tinh-thue.jsp").forward(request, response);
     }
 
 }

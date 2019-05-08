@@ -35,7 +35,7 @@ public class RegisterServlet extends HttpServlet {
         
         if (!matKhau.equals(nhapLaiMatKhau)) {
             request.setAttribute("wrongConfirmPassword", "Mật khẩu nhập lại không trùng");
-            request.getRequestDispatcher("/register.jsp").forward(request, response);
+            request.getRequestDispatcher("/dang-ky.jsp").forward(request, response);
             return;
         }
         
@@ -59,11 +59,11 @@ public class RegisterServlet extends HttpServlet {
         UserDAO userDAO = new UserDAO();
         
         if (userDAO.findUser(user) != null) { //tài khoản đã tồn tại
-            request.getRequestDispatcher("/register.jsp").forward(request, response);
+            request.getRequestDispatcher("/dang-ky.jsp").forward(request, response);
             
         } else {    //đăng ký thành công
             userDAO.addUser(user);
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/dang-nhap.jsp").forward(request, response);
         }
     }
 

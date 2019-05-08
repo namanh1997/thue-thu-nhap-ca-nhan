@@ -30,7 +30,7 @@ public class TaxCalculation {
 
     public static long tinhTongThuNhap(User u) {
         return u.getLuong() + u.getThuong() + u.getLamThem()
-                + u.getLamThem() + u.getPhuCap1() + u.getPhuCap2()
+                + u.getPhuCap1() + u.getPhuCap2()
                 + u.getPhuCap3() + u.getPhuCap4();
     }
     

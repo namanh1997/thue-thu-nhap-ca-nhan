@@ -49,11 +49,11 @@ public class LoginServlet extends HttpServlet {
         UserDAO userDAO = new UserDAO();
 
         if (userDAO.findUser(user) == null) {
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/dang-nhap.jsp").forward(request, response);
         } else {
             user = userDAO.findUser(user);
             request.getSession().setAttribute("user", user);
-            request.getRequestDispatcher("/declare.jsp").forward(request, response);
+            request.getRequestDispatcher("/ke-khai.jsp").forward(request, response);
         }
         
     }

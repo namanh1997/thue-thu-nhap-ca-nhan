@@ -7,6 +7,10 @@
 <%@page import="model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<head>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css"
+</head>
+
 <header>
     <div class="text-center" 
          style="color: #fff; background-color: #1f898e; padding: 30px;">
@@ -21,7 +25,6 @@
                             User user = (User) request.getSession().getAttribute("user");
                             if (user != null) {
                         %>
-                        <a class="nav-link" href="${pageContext.request.contextPath}/declare.jsp">Kê khai thuế</a>
                         <%
                             } else {
                         %>
@@ -33,10 +36,12 @@
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/login.jsp">Đăng nhập</a>
+                        <%if(user != null){ %>
+                        <label class="nav-link">Chào <%=user.getHoTen()%></label>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/LogoutServlet">Đăng xuất</a>
+                        <% }%>
                     </li>
                 </ul>
             </div>
