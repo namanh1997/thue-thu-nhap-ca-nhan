@@ -18,6 +18,7 @@
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/jquery-3.4.0.min.js"></script>
 
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/tax-calculation.css">
     </head>
     <body>
@@ -179,7 +180,7 @@
             </div>
         </div>
         <% } else { %>
-        <jsp:include page="login.jsp"></jsp:include>
+        <jsp:include page="dang-nhap.jsp"></jsp:include>
         <% }%>
     </body>
 </html>

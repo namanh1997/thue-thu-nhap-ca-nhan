@@ -17,6 +17,7 @@
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/jquery-3.4.0.min.js"></script>
      
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/declare.css">
         <script src="${pageContext.request.contextPath}/js/declare.js"></script>
     </head>
@@ -28,7 +29,7 @@
         %>
         <jsp:include page="dau-trang.jsp"></jsp:include>
         <div class="container">
-            <form action="DeclareServlet" method="get" class="needs-validation" novalidate>
+            <form action="KeKhai" method="get" class="needs-validation" novalidate>
                 
                 <div class="form-group row">
                     <label for="hop-dong-lao-dong" class="col-2 text-right">Hợp đồng lao động</label>
@@ -171,7 +172,7 @@
             </form>
         </div>
         <% } else { %>
-        <jsp:include page="login.jsp"></jsp:include>
+        <jsp:include page="dang-nhap.jsp"></jsp:include>
         <% }%>
     </body>
 </html>

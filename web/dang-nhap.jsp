@@ -27,7 +27,7 @@
         <div class="container">
             <div class="row justify-content-center align-items-center">
                 <div class="col-4">
-                    <form action="LoginServlet" method="post" >
+                    <form action="DangNhap" method="post" >
                         <span class="form-title">Đăng Nhập</span>
                             <div class="form-group">
                                 <label for="cmnd"><b>CHỨNG MINH NHÂN DÂN</b></label>

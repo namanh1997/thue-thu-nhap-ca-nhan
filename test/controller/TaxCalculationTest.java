@@ -33,12 +33,10 @@ public class TaxCalculationTest {
 
     @BeforeClass
     public static void setUpClass() {
-
     }
 
     @AfterClass
     public static void tearDownClass() {
-
     }
 
     @Before
@@ -71,10 +69,7 @@ public class TaxCalculationTest {
 
     @After
     public void tearDown() throws SQLException {
-        String sql = "DELETE FROM tbl_user WHERE cmnd = ?";
-        PreparedStatement ps = userdao.connection.prepareStatement(sql);
-        ps.setString(1, user.getCmnd());
-        ps.executeUpdate();
+        userdao.connection.rollback();
     }
 
     /**
@@ -87,6 +82,7 @@ public class TaxCalculationTest {
         long expResult = 0L;
         long result = TaxCalculation.tinhTongThuNhap(u);
         assertEquals(expResult, result);
+       
     }
 
     /**

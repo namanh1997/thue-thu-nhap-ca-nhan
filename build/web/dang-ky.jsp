@@ -27,7 +27,7 @@
         <div class="container">
             <div class="row justify-content-center align-items-center">
                 <div class="col-4">
-                    <form action="RegisterServlet" method="post" class="needs-validation" novalidate>
+                    <form action="DangKy" method="post" class="needs-validation" novalidate>
                         <span class="form-title">Đăng Ký</span>
                         <div class="form-group">
                             <label for="cmnd"><b>Chứng Minh Nhân Dân(*)</b></label>
@@ -39,7 +39,7 @@
                         <div class="form-group">
                             <label for="hoTen"><b>Họ và tên(*)</b></label>
                             <input type="text" class="form-control" name="hoTen" 
-                                   pattern="^[A-Za-z\s]{0,255}$" maxlength="255"
+                                   pattern="^[A-Za-z\s\p{L}]{0,255}$" maxlength="255"
                                    required>
                             <div class="invalid-feedback">Không chứa số và 
                                 các ký tự đặc biệt. Tối đa 255 ký tự</div>

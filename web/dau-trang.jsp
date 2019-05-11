@@ -40,7 +40,7 @@
                         <label class="nav-link">Chào <%=user.getHoTen()%></label>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/LogoutServlet">Đăng xuất</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/DangXuat">Đăng Xuất</a>
                         <% }%>
                     </li>
                 </ul>

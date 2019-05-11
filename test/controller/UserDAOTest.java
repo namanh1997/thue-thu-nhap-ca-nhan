@@ -26,15 +26,10 @@ import static org.junit.Assert.*;
  * @author NamAnh
  */
 public class UserDAOTest {
-    
+
     Connection connection;
 
-    public UserDAOTest() throws SQLException, ClassNotFoundException {
-        String url = "jdbc:mysql://localhost:3306/thue";
-        String userDatabase = "root";
-        String password = "1234";
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        connection = DriverManager.getConnection(url, userDatabase, password);
+    public UserDAOTest() {
     }
 
     @BeforeClass
@@ -47,40 +42,18 @@ public class UserDAOTest {
 
     @Before
     public void setUp() throws SQLException, ClassNotFoundException {
-        String sql = "INSERT INTO tbl_user (cmnd, mat_khau, ho_ten, ngay_sinh,"
-                + "so_thang_hop_dong_lao_dong, luong, thuong, dinh_muc_thuong, "
-                + "lam_them, dinh_muc_lam_them, phu_cap_1, phu_cap_2, phu_cap_3,"
-                + " dinh_muc_phu_cap_3, phu_cap_4, dinh_muc_phu_cap_4, "
-                + "so_nguoi_phu_thuoc) "
-                + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-        PreparedStatement ps = connection.prepareStatement(sql);
-        ps.setString(1, "");
-        ps.setString(2, "");
-        ps.setString(3, "");
-        ps.setDate(4, Date.valueOf(""));
-        ps.setString(5, String.valueOf(0));
-        ps.setString(6, String.valueOf(0));
-        ps.setString(7, String.valueOf(0));
-        ps.setString(8, String.valueOf(0));
-        ps.setString(9, String.valueOf(0));
-        ps.setString(10, String.valueOf(0));
-        ps.setString(11, String.valueOf(0));
-        ps.setString(12, String.valueOf(0));
-        ps.setString(13, String.valueOf(0));
-        ps.setString(14, String.valueOf(0));
-        ps.setString(15, String.valueOf(0));
-        ps.setString(16, String.valueOf(0));
-        ps.setString(17, String.valueOf(0));
-        ps.executeUpdate();
+        String url = "jdbc:mysql://localhost:3306/thue";
+        String userDatabase = "root";
+        String password = "1234";
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        connection = DriverManager.getConnection(url, userDatabase, password);
+        connection.setAutoCommit(false);
     }
 
     @After
     public void tearDown() throws SQLException {
-        String sql = "DELETE FROM tbl_user WHERE cmnd = ?";
-        PreparedStatement ps = connection.prepareStatement(sql);
-        ps.setString(1, "");
-        ps.executeUpdate();
+        connection.rollback();
+        connection.close();
     }
 
     /**
@@ -100,11 +73,31 @@ public class UserDAOTest {
      * Test of addUser method, of class UserDAO.
      */
     @Test
-    public void testAddUser() {
+    public void testAddUser() throws SQLException {
         System.out.println("addUser");
-        User user = null;
+
+        User user = new User();
+        user.setCmnd("987654321");
+        user.setMatKhau("654321");
+        user.setHoTen("Test");
+        user.setNgaySinh(Date.valueOf("1997-01-20"));
+        user.setSoThangHopDongLaoDong(4);
+        user.setLuong(10000000);
+        user.setThuong(0);
+        user.setDinhMucThuong(1000);
+        user.setLamThem(0);
+        user.setDinhMucLamThem(0);
+        user.setPhuCap1(730000);
+        user.setPhuCap2(400000);
+        user.setPhuCap3(0);
+        user.setDinhMucPhuCap3(0);
+        user.setPhuCap4(0);
+        user.setDinhMucPhuCap4(0);
+        user.setSoNguoiPhuThuoc(0);
+        
         UserDAO instance = new UserDAO();
         instance.addUser(user);
+        
         assertEquals(instance.findUser(user), user);
     }
 
@@ -114,9 +107,26 @@ public class UserDAOTest {
     @Test
     public void testUpdateUser() {
         System.out.println("updateUser");
-        User user = null;
+        
+        User user = new User();
+        user.setCmnd("123456789");
+        user.setSoThangHopDongLaoDong(4);
+        user.setLuong(100000000);
+        user.setThuong(0);
+        user.setDinhMucThuong(1000);
+        user.setLamThem(0);
+        user.setDinhMucLamThem(0);
+        user.setPhuCap1(730000);
+        user.setPhuCap2(400000);
+        user.setPhuCap3(0);
+        user.setDinhMucPhuCap3(0);
+        user.setPhuCap4(0);
+        user.setDinhMucPhuCap4(0);
+        user.setSoNguoiPhuThuoc(0);
+        
         UserDAO instance = new UserDAO();
         instance.updateUser(user);
+        
         assertEquals(instance.findUser(user), user);
     }
 
