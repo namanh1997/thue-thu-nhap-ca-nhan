@@ -7,6 +7,7 @@ package servlet;
 
 import controller.UserDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import javax.servlet.ServletException;
@@ -25,9 +26,10 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset = UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        
+        PrintWriter out = response.getWriter();
+
         String cmnd = request.getParameter("cmnd");
         String matKhau = request.getParameter("mat-khau");
         
@@ -47,9 +49,12 @@ public class LoginServlet extends HttpServlet {
 
         User user = new User(cmnd, matKhau);
         UserDAO userDAO = new UserDAO();
-
+        
         if (userDAO.findUser(user) == null) {
-            request.getRequestDispatcher("/dang-nhap.jsp").forward(request, response);
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Tài khoản hoặc mật khẩu không đúng');");
+            out.println("</script>");
+            request.getRequestDispatcher("/dang-nhap.jsp").include(request, response);
         } else {
             user = userDAO.findUser(user);
             request.getSession().setAttribute("user", user);

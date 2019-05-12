@@ -20,10 +20,16 @@ import model.User;
  */
 public class UserDAO {
 
-    public static Connection connection;
+    private static Connection connection;
 
     public UserDAO() {
-        
+    }
+    
+    public UserDAO(Connection conn){
+        this.connection = conn;
+    }
+
+    public Connection connect() {
         String url = "jdbc:mysql://localhost:3306/thue";
         String userDatabase = "root";
         String password = "1234";
@@ -35,12 +41,13 @@ public class UserDAO {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return connection;
     }
 
     public User findUser(User user) {
         String sql = "SELECT * FROM tbl_user WHERE cmnd = ? AND mat_khau = ?";
         try {
-            PreparedStatement ps = connection.prepareStatement(sql);
+            PreparedStatement ps = connect().prepareStatement(sql);
             ps.setString(1, user.getCmnd());
             ps.setString(2, user.getMatKhau());
             ResultSet rs = ps.executeQuery();
@@ -72,7 +79,7 @@ public class UserDAO {
                 + "so_nguoi_phu_thuoc) "
                 + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
-            PreparedStatement ps = connection.prepareStatement(sql);
+            PreparedStatement ps = connect().prepareStatement(sql);
             ps.setString(1, user.getCmnd());
             ps.setString(2, user.getMatKhau());
             ps.setString(3, user.getHoTen());
@@ -103,7 +110,7 @@ public class UserDAO {
                 + "phu_cap_4 = ?, dinh_muc_phu_cap_4 = ?, so_nguoi_phu_thuoc = ?"
                 + "WHERE cmnd = ?";
         try {
-            PreparedStatement ps = connection.prepareStatement(sql);
+            PreparedStatement ps = connect().prepareStatement(sql);
             ps.setString(1, String.valueOf(user.getSoThangHopDongLaoDong()));
             ps.setString(2, String.valueOf(user.getLuong()));
             ps.setString(3, String.valueOf(user.getThuong()));

@@ -24,11 +24,11 @@
     <body>
         <%
             User user = (User) request.getSession().getAttribute("user");
-            DecimalFormat formatter = new DecimalFormat("############");
+            DecimalFormat formatter = new DecimalFormat("###,###,###,###");
             if (user != null) {
         %>
         <jsp:include page="dau-trang.jsp"></jsp:include>
-
+        <span class="form-title">Tính Thuế</span>
         <div class="container">
             <div class="form-group row">
                 <label for="hop-dong-lao-dong" class="col-2 text-right">Hợp đồng lao động</label>

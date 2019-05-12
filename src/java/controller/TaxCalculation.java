@@ -33,9 +33,9 @@ public class TaxCalculation {
                 + u.getPhuCap1() + u.getPhuCap2()
                 + u.getPhuCap3() + u.getPhuCap4();
     }
-    
+
     public static long tinhThuePhaiNop(User u) {
-        if (u.getSoThangHopDongLaoDong() >= 3) {
+        if (u.getSoThangHopDongLaoDong() == 1) {
             long thuNhapTinhThue = tinhThuNhapTinhThue(u);
 
             if (thuNhapTinhThue > 80000000) {           //Trên 80tr
@@ -50,42 +50,30 @@ public class TaxCalculation {
                 return (long) (thuNhapTinhThue * THUE_SUAT_BAC_3 - 750000);
             } else if (thuNhapTinhThue > 5000000) {     //Trên 5 đến 10tr
                 return (long) (thuNhapTinhThue * THUE_SUAT_BAC_2 - 250000);
-            } else {                                    //Đến 5tr
+            } else if (thuNhapTinhThue > 0) {            //Đến 5tr
                 return (long) (thuNhapTinhThue * THUE_SUAT_BAC_1);
+            } else {
+                return 0;
             }
         } else {
-            return (long) (tinhThuNhapTinhThue(u) * THUE_SUAT_HDLD_DUOI_3_THANG_HOAC_KHONG_HDLD);
+            if (tinhThuNhapTinhThue(u) > 0) {
+                return (long) (tinhThuNhapTinhThue(u) * THUE_SUAT_HDLD_DUOI_3_THANG_HOAC_KHONG_HDLD);
+            } else {
+                return 0;
+            }
         }
     }
 
     public static long tinhThuNhapTinhThue(User u) {
         return tinhThuNhapChiuThue(u) - tinhCacKhoanGiamTru(u);
     }
-    
-    public static long tinhThuNhapChiuThue(User u){
-        long tinhThue = 0 + u.getLuong();
 
-        if (u.getPhuCap1() > DINH_MUC_TIEN_AN) {
-            tinhThue += u.getPhuCap1() - DINH_MUC_TIEN_AN;
-        }
-
-        if (u.getPhuCap2() > DINH_MUC_TIEN_TRANG_PHUC) {
-            tinhThue += u.getPhuCap2() - DINH_MUC_TIEN_TRANG_PHUC;
-        }
-
-        if (u.getPhuCap3() > u.getDinhMucPhuCap3()) {
-            tinhThue += u.getPhuCap3() - u.getDinhMucPhuCap3();
-        }
-
-        if (u.getPhuCap4() > u.getDinhMucPhuCap4()) {
-            tinhThue += u.getPhuCap4() - u.getDinhMucPhuCap4();
-        }
-        
-        return tinhThue;
+    public static long tinhThuNhapChiuThue(User u) {
+        return tinhTongThuNhap(u) - tinhThuNhapMienThue(u);
     }
 
     public static long tinhThuNhapMienThue(User u) {
-        long mienThue = 0 + u.getThuong();
+        long mienThue = 0;
 
         if (u.getPhuCap1() > DINH_MUC_TIEN_AN) {
             mienThue += DINH_MUC_TIEN_AN;
@@ -109,6 +97,18 @@ public class TaxCalculation {
             mienThue += u.getDinhMucPhuCap4();
         } else {
             mienThue += u.getPhuCap4();
+        }
+
+        if (u.getThuong() > u.getDinhMucThuong()) {
+            mienThue += u.getDinhMucThuong();
+        } else {
+            mienThue += u.getThuong();
+        }
+
+        if (u.getLamThem() > u.getDinhMucLamThem()) {
+            mienThue += u.getDinhMucLamThem();
+        } else {
+            mienThue += u.getLamThem();
         }
 
         return mienThue;

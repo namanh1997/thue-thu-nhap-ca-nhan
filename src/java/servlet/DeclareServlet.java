@@ -30,18 +30,18 @@ public class DeclareServlet extends HttpServlet {
         } else if (request.getParameter("hopDong").equals("duoi3Thang")) {
             user.setSoThangHopDongLaoDong(0);
         }
-        user.setLuong(Long.parseLong(request.getParameter("luong")));
-        user.setThuong(Long.parseLong(request.getParameter("thuong")));
-        user.setDinhMucThuong(Long.parseLong(request.getParameter("dinhMucThuong")));
-        user.setLamThem(Long.parseLong(request.getParameter("tienLamThemGio")));
-        user.setDinhMucLamThem(Long.parseLong(request.getParameter("dinhMucTienLamThemGio")));
-        user.setPhuCap1(Long.parseLong(request.getParameter("phuCapTienAn")));
-        user.setPhuCap2(Long.parseLong(request.getParameter("phuCapTrangPhuc")));
-        user.setPhuCap3(Long.parseLong(request.getParameter("phuCapDiLai")));
-        user.setDinhMucPhuCap3(Long.parseLong(request.getParameter("dinhMucPhuCapDiLai")));
-        user.setPhuCap4(Long.parseLong(request.getParameter("phuCapKhac")));
-        user.setDinhMucPhuCap4(Long.parseLong(request.getParameter("dinhMucPhuCapKhac")));
-        user.setSoNguoiPhuThuoc(Integer.parseInt(request.getParameter("soNguoiPhuThuoc")));
+        user.setLuong(Long.parseLong(request.getParameter("luong").replaceAll(",", "")));
+        user.setThuong(Long.parseLong(request.getParameter("thuong").replaceAll(",", "")));
+        user.setDinhMucThuong(Long.parseLong(request.getParameter("dinhMucThuong").replaceAll(",", "")));
+        user.setLamThem(Long.parseLong(request.getParameter("tienLamThemGio").replaceAll(",", "")));
+        user.setDinhMucLamThem(Long.parseLong(request.getParameter("dinhMucTienLamThemGio").replaceAll(",", "")));
+        user.setPhuCap1(Long.parseLong(request.getParameter("phuCapTienAn").replaceAll(",", "")));
+        user.setPhuCap2(Long.parseLong(request.getParameter("phuCapTrangPhuc").replaceAll(",", "")));
+        user.setPhuCap3(Long.parseLong(request.getParameter("phuCapDiLai").replaceAll(",", "")));
+        user.setDinhMucPhuCap3(Long.parseLong(request.getParameter("dinhMucPhuCapDiLai").replaceAll(",", "")));
+        user.setPhuCap4(Long.parseLong(request.getParameter("phuCapKhac").replaceAll(",", "")));
+        user.setDinhMucPhuCap4(Long.parseLong(request.getParameter("dinhMucPhuCapKhac").replaceAll(",", "")));
+        user.setSoNguoiPhuThuoc(Integer.parseInt(request.getParameter("soNguoiPhuThuoc").replaceAll(",", "")));
         UserDAO userDAO = new UserDAO();
         userDAO.updateUser(user);
         

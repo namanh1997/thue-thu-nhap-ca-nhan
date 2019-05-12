@@ -5,7 +5,6 @@
  */
 package controller;
 
-import static controller.UserDAO.connection;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -62,9 +61,9 @@ public class UserDAOTest {
     @Test
     public void testFindUser() {
         System.out.println("findUser");
-        User user = null;
+        User user = new User("123456789", Md5.encrypt("123456"));
         UserDAO instance = new UserDAO();
-        User expResult = null;
+        User expResult = user;
         User result = instance.findUser(user);
         assertEquals(expResult, result);
     }
@@ -77,7 +76,7 @@ public class UserDAOTest {
         System.out.println("addUser");
 
         User user = new User();
-        user.setCmnd("987654321");
+        user.setCmnd("444444444");
         user.setMatKhau("654321");
         user.setHoTen("Test");
         user.setNgaySinh(Date.valueOf("1997-01-20"));
@@ -95,21 +94,22 @@ public class UserDAOTest {
         user.setDinhMucPhuCap4(0);
         user.setSoNguoiPhuThuoc(0);
         
-        UserDAO instance = new UserDAO();
+        UserDAO instance = new UserDAO(connection);
         instance.addUser(user);
         
-        assertEquals(instance.findUser(user), user);
+        assertEquals(user, instance.findUser(user));
     }
 
     /**
      * Test of updateUser method, of class UserDAO.
      */
     @Test
-    public void testUpdateUser() {
+    public void testUpdateUser() throws SQLException {
         System.out.println("updateUser");
         
         User user = new User();
-        user.setCmnd("123456789");
+        user.setCmnd("987654321");
+        user.setMatKhau("654321");
         user.setSoThangHopDongLaoDong(4);
         user.setLuong(100000000);
         user.setThuong(0);
@@ -124,10 +124,10 @@ public class UserDAOTest {
         user.setDinhMucPhuCap4(0);
         user.setSoNguoiPhuThuoc(0);
         
-        UserDAO instance = new UserDAO();
+        UserDAO instance = new UserDAO(connection);
         instance.updateUser(user);
         
-        assertEquals(instance.findUser(user), user);
+        assertEquals(user, instance.findUser(user));
     }
 
 }

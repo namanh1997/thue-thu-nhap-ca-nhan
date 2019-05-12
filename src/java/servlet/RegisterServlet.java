@@ -26,19 +26,23 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
 
         String cmnd = request.getParameter("cmnd");
         String hoTen = request.getParameter("hoTen");
         String ngaySinh = request.getParameter("ngaySinh");
         String matKhau = request.getParameter("matKhau");
         String nhapLaiMatKhau = request.getParameter("nhapLaiMatKhau");
-        
+
         if (!matKhau.equals(nhapLaiMatKhau)) {
-            request.setAttribute("wrongConfirmPassword", "Mật khẩu nhập lại không trùng");
-            request.getRequestDispatcher("/dang-ky.jsp").forward(request, response);
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Mật khẩu nhập lại không trùng');");
+            out.println("</script>");
+            request.getRequestDispatcher("/dang-ky.jsp").include(request, response);
             return;
         }
-        
+
         //mã hóa md5
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
@@ -52,18 +56,24 @@ public class RegisterServlet extends HttpServlet {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        
+
         User user = new User(cmnd, matKhau, hoTen, Date.valueOf(ngaySinh),
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-        
+
         UserDAO userDAO = new UserDAO();
-        
+
         if (userDAO.findUser(user) != null) { //tài khoản đã tồn tại
-            request.getRequestDispatcher("/dang-ky.jsp").forward(request, response);
-            
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Tài khoản đã tồn tại');");
+            out.println("</script>");
+            request.getRequestDispatcher("/dang-ky.jsp").include(request, response);
+
         } else {    //đăng ký thành công
             userDAO.addUser(user);
-            request.getRequestDispatcher("/dang-nhap.jsp").forward(request, response);
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Đăng ký thành công');");
+            out.println("window.location= \"dang-nhap.jsp\";");
+            out.println("</script>");
         }
     }
 

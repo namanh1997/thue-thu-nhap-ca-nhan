@@ -13,13 +13,20 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/NamAnh/Documents/NetBeansProjects/TNCN/web/tinh-thue.jsp</file>
+            <file>file:/C:/Users/NamAnh/Documents/NetBeansProjects/TNCN/src/java/servlet/DeclareServlet.java</file>
+            <file>file:/C:/Users/NamAnh/Documents/NetBeansProjects/TNCN/src/java/controller/UserDAO.java</file>
             <file>file:/C:/Users/NamAnh/Documents/NetBeansProjects/TNCN/web/ke-khai.jsp</file>
-            <file>file:/C:/Users/NamAnh/Documents/NetBeansProjects/TNCN/web/dang-nhap.jsp</file>
-            <file>file:/C:/Users/NamAnh/Documents/NetBeansProjects/TNCN/web/dau-trang.jsp</file>
+            <file>file:/C:/Users/NamAnh/Documents/NetBeansProjects/TNCN/test/model/UserTest.java</file>
             <file>file:/C:/Users/NamAnh/Documents/NetBeansProjects/TNCN/src/java/servlet/RegisterServlet.java</file>
             <file>file:/C:/Users/NamAnh/Documents/NetBeansProjects/TNCN/web/dang-ky.jsp</file>
-            <file>file:/C:/Users/NamAnh/Documents/NetBeansProjects/TNCN/test/controller/TaxCalculationTest.java</file>
             <file>file:/C:/Users/NamAnh/Documents/NetBeansProjects/TNCN/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/NamAnh/Documents/NetBeansProjects/TNCN/src/java/model/User.java</file>
+            <file>file:/C:/Users/NamAnh/Documents/NetBeansProjects/TNCN/web/dang-nhap.jsp</file>
+            <file>file:/C:/Users/NamAnh/Documents/NetBeansProjects/TNCN/web/css/declare.css</file>
+            <file>file:/C:/Users/NamAnh/Documents/NetBeansProjects/TNCN/src/java/servlet/LoginServlet.java</file>
+            <file>file:/C:/Users/NamAnh/Documents/NetBeansProjects/TNCN/src/java/controller/TaxCalculation.java</file>
+            <file>file:/C:/Users/NamAnh/Documents/NetBeansProjects/TNCN/test/controller/UserDAOTest.java</file>
+            <file>file:/C:/Users/NamAnh/Documents/NetBeansProjects/TNCN/src/java/servlet/LogoutServlet.java</file>
         </group>
     </open-files>
 </project-private>
